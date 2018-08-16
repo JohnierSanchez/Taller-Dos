@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>insertar datos con ajax</title>
+	<script src="jquery-3.3.1.min.js"></script>
+</head>
+<body>
+	<form id="frmajax" method="POST">
+		<label>Nombre:</label>
+		<p></p>
+		<input type="text" name="nombre" id="nombre">
+		<p></p>
+		<label>Apellido:</label>
+		<p></p>
+		<input type="text" name="apellido" id="apellido">
+		<p></p>
+		<label>Email:</label>
+		<p></p>
+		<input type="text" name="email" id="email">
+		<p></p>
+		<label>Tipo de tarjeta credito:</label>
+		<p></p>
+		<select name="sel" id="sel">
+			<option value="mus">Visa</option>
+			<option value="vid">MasterCard</option>
+			<option value="ima">Diners Club</option>
+			<option value="juegos">American Express</option>
+		</select>
+		<p></p>
+		<div>
+		<p></p>
+		<label>Titular de la tarjeta:</label>
+		<p></p>
+		<input type="text" name="titular" id="titular">
+		<p></p>
+		<label>Numero de la tarjeta:</label>
+		<p></p>
+		<input type="text" name="ntarjeta" id="ntarjeta">
+		<p></p>
+		<label>CVV2:</label>
+		<p></p>
+		<input type="text" name="cvv" id="cvv">
+		<p></p>
+		<label>Fecha Exp:</label>
+		<p></p>
+		<input type="text" name="fecha" placeholder="D/M/A" id="fecha">
+		<p></p>
+		<label>Direccion:</label>
+		<p></p>
+		<input type="text" name="direccion" id="direccion">
+		<p></p>
+		<label>Ciudad:</label>
+		<p></p>
+		<input type="text" name="ciudad" id="ciudad">
+		<p></p>
+        <label>Pais:</label>
+		<p></p>
+		<input type="text" name="pais" id="pais">
+		<p></p>
+		<label>Numero:</label>
+		<p></p>
+		<input type="text" name="numero" id="numero">
+		<p></p>
+		<button id="btnguardar">Guardar datos</button>
+	    <p></p>
+	</div>
+	</form>
+</body>
+</html>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#btnguardar').click(function(){
+			var datos=$('#frmajax').serialize();
+			$.ajax({
+				type:"POST",
+				url:"insertar.php",
+				data:datos,
+				success:function(r){
+					if(r==1){
+						alert("agregado con exito");
+					}else{
+						alert("Fallo el server");
+					}
+				}
+			});
+
+			return false;
+		});
+	});
+</script>
